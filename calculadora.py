@@ -25,7 +25,18 @@ class MiVentana(QMainWindow):
         self.suma.clicked.connect(self.sumar)
         self.division.clicked.connect(self.dividir)
         self.igual.clicked.connect(self.resultado)
-
+        self.borrar.clicked.connect(self.on_borrar)
+        
+    def on_borrar(self):
+        if(self.operador1 == 0):
+            self.a = int(self.Calculo.text())
+            self.operador1 = int(str(self.a)[:-1])
+            self.Calculo.setText(str(self.operador1))
+        else:
+            self.b = int(self.Calculo.text())
+            self.operador2 = int(str(self.b)[:-1])
+            self.Calculo.setText(str(self.operador2))
+            
     def sumar(self):
         #Si ya tiene asignado un operador, agregamos el otro con el mismo botón
         if(self.operador1 == 0):
@@ -44,6 +55,9 @@ class MiVentana(QMainWindow):
         else:
             self.operador2 = int(self.Calculo.text())
             self.Calculo.setText(str(self.operador1/self.operador2))
+    
+
+            
             
         
         
