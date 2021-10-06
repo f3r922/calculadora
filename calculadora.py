@@ -23,19 +23,28 @@ class MiVentana(QMainWindow):
         self.boton0.clicked.connect(self.click_0)
         #Listeners de Eventos de los botones de las operaciones
         self.suma.clicked.connect(self.sumar)
-        self.division.clicked.connect(self.dividir)
         self.igual.clicked.connect(self.resultado)
         self.borrar.clicked.connect(self.on_borrar)
+        self.division.clicked.connect(self.dividir)
         
     def on_borrar(self):
-        if(self.operador1 == 0):
-            self.a = int(self.Calculo.text())
-            self.operador1 = int(str(self.a)[:-1])
-            self.Calculo.setText(str(self.operador1))
-        else:
-            self.b = int(self.Calculo.text())
-            self.operador2 = int(str(self.b)[:-1])
-            self.Calculo.setText(str(self.operador2))
+        
+        label_content = self.Calculo.text()
+        self.Calculo.setText(label_content[:-1])    
+        
+        
+        
+        
+        #if(self.operador1 == 0):
+            #self.a = int(self.Calculo.text())
+            #self.operador1 = int(str(self.a)[:-1])
+            #self.Calculo.setText(str(self.operador1))
+            #self.operacion= 'borrar'
+
+        #else:
+            #self.b = int(self.Calculo.text())
+            #self.operador2 = int(str(self.b)[:-1])
+            #self.Calculo.setText(str(self.operador2))
             
     def sumar(self):
         #Si ya tiene asignado un operador, agregamos el otro con el mismo botón
@@ -43,38 +52,55 @@ class MiVentana(QMainWindow):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "suma"
-        else:
-            self.operador2 = int(self.Calculo.text())
-            self.Calculo.setText(str(self.operador1+self.operador2))
+        
+        #if(self.operacion == 'borrar'):
+            #self.operador1 = int(self.Calculo.text())
+            #self.Calculo.setText("")
+            #self.operacion = "suma"
+            
+        #if(self.operador1 and self.operador2 != 0):
+            #self.operador1 = int(self.Calculo.text())
+            #self.Calculo.setText("")
+            #self.operacion = "suma" 
+        else:       
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.operacion = "suma"          
+        #else:
+            #self.operador2 = int(self.Calculo.text())
+            #self.Calculo.setText(str(self.operador1+self.operador2)) 
+            
     
     def dividir(self):
         if(self.operador1 == 0):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "division"
-        else:
-            self.operador2 = int(self.Calculo.text())
-            self.Calculo.setText(str(self.operador1/self.operador2))
+            
+        #if(self.operacion == 'borrar'):
+            #self.operador1 = int(self.Calculo.text())
+            #self.Calculo.setText("")
+            #self.operacion = "division"
+            
+        if(self.operador1 and self.operador2 != 0):
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.operacion = "division"           
     
-
-            
-            
-        
-        
 
     def resultado(self):
         #Se procede a la operación dependiendo del tipo y siempre y cuando este determinado el primer operador.
         if(self.operacion == "suma"):
             self.operador2 = int(self.Calculo.text())
             self.Calculo.setText(str(self.operador1+self.operador2))
-        
+
         if(self.operacion == "division"):
             self.operador2 = int(self.Calculo.text())
             if self.operador2==0:
                 self.Calculo.setText('Math ERROR')
             else:
-                self.Calculo.setText(str(self.operador1/self.operador2))
-
+                self.Calculo.setText(str(int(self.operador1/self.operador2)))
+                
     #Eventos de asignación de valores al label
     def click_1(self):
         self.Calculo.setText(self.Calculo.text() + "1")

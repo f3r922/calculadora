@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>966</width>
-    <height>407</height>
+    <width>340</width>
+    <height>276</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,6 +19,12 @@
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="Calculo">
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>24</pointsize>
+         </font>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -28,6 +34,10 @@
        <layout class="QHBoxLayout" name="horizontalLayout_6">
         <item>
          <widget class="QPushButton" name="potencia">
+          <property name="styleSheet">
+           <string notr="true">font-size: 20px
+</string>
+          </property>
           <property name="text">
            <string>^</string>
           </property>
@@ -226,6 +236,17 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="punto">
+          <property name="styleSheet">
+           <string notr="true">font-size: 20px
+</string>
+          </property>
+          <property name="text">
+           <string>.</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="igual">
           <property name="styleSheet">
            <string notr="true">font-size: 20px
@@ -233,17 +254,6 @@
           </property>
           <property name="text">
            <string>=</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="igual_2">
-          <property name="styleSheet">
-           <string notr="true">font-size: 20px
-</string>
-          </property>
-          <property name="text">
-           <string>.</string>
           </property>
          </widget>
         </item>
