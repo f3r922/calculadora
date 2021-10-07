@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5 import uic
+import math
 
 class MiVentana(QMainWindow):
     def __init__(self):
@@ -26,50 +27,27 @@ class MiVentana(QMainWindow):
         self.igual.clicked.connect(self.resultado)
         self.borrar.clicked.connect(self.on_borrar)
         self.division.clicked.connect(self.dividir)
+        self.potencia.clicked.connect(self.potenciacion)
+        self.raiz.clicked.connect(self.radicacion)
         
     def on_borrar(self):
         
         label_content = self.Calculo.text()
         self.Calculo.setText(label_content[:-1])    
-        
-        
-        
-        
-        #if(self.operador1 == 0):
-            #self.a = int(self.Calculo.text())
-            #self.operador1 = int(str(self.a)[:-1])
-            #self.Calculo.setText(str(self.operador1))
-            #self.operacion= 'borrar'
-
-        #else:
-            #self.b = int(self.Calculo.text())
-            #self.operador2 = int(str(self.b)[:-1])
-            #self.Calculo.setText(str(self.operador2))
             
     def sumar(self):
-        #Si ya tiene asignado un operador, agregamos el otro con el mismo botón
+  
         if(self.operador1 == 0):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "suma"
         
-        #if(self.operacion == 'borrar'):
-            #self.operador1 = int(self.Calculo.text())
-            #self.Calculo.setText("")
-            #self.operacion = "suma"
-            
-        #if(self.operador1 and self.operador2 != 0):
-            #self.operador1 = int(self.Calculo.text())
-            #self.Calculo.setText("")
-            #self.operacion = "suma" 
+
         else:       
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "suma"          
-        #else:
-            #self.operador2 = int(self.Calculo.text())
-            #self.Calculo.setText(str(self.operador1+self.operador2)) 
-            
+
     
     def dividir(self):
         if(self.operador1 == 0):
@@ -77,17 +55,38 @@ class MiVentana(QMainWindow):
             self.Calculo.setText("")
             self.operacion = "division"
             
-        #if(self.operacion == 'borrar'):
-            #self.operador1 = int(self.Calculo.text())
-            #self.Calculo.setText("")
-            #self.operacion = "division"
-            
+
         if(self.operador1 and self.operador2 != 0):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "division"           
     
+    def potenciacion(self):
+    
+        if(self.operador1 == 0):
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.operacion = "potencia"
+        
 
+        else:       
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.operacion = "potencia" 
+                  
+    def radicacion(self):
+    # Muestro directamente el resultado al presionar el boton raiz    
+        if(self.operador1 == 0):
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.Calculo.setText(str(math.pow(self.operador1,(1/2))))
+        
+
+        else:       
+            self.operador1 = int(self.Calculo.text())
+            self.Calculo.setText("")
+            self.Calculo.setText(str(int(math.pow(self.operador1,(1/2)))))  
+            
     def resultado(self):
         #Se procede a la operación dependiendo del tipo y siempre y cuando este determinado el primer operador.
         if(self.operacion == "suma"):
@@ -100,7 +99,13 @@ class MiVentana(QMainWindow):
                 self.Calculo.setText('Math ERROR')
             else:
                 self.Calculo.setText(str(int(self.operador1/self.operador2)))
-                
+        
+        if(self.operacion == "potencia"):
+            self.operador2 = int(self.Calculo.text())
+            self.Calculo.setText(str(int(math.pow(self.operador1,self.operador2))))
+
+
+            
     #Eventos de asignación de valores al label
     def click_1(self):
         self.Calculo.setText(self.Calculo.text() + "1")
