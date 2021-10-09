@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>340</width>
+    <width>421</width>
     <height>276</height>
    </rect>
   </property>
@@ -55,13 +55,13 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="borrar">
+         <widget class="QPushButton" name="borrar_operador">
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
           </property>
           <property name="text">
-           <string>DEL</string>
+           <string>CE</string>
           </property>
          </widget>
         </item>
@@ -72,7 +72,18 @@
 </string>
           </property>
           <property name="text">
-           <string>AC</string>
+           <string>C</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="borrar">
+          <property name="styleSheet">
+           <string notr="true">font-size: 20px
+</string>
+          </property>
+          <property name="text">
+           <string>⇐</string>
           </property>
          </widget>
         </item>

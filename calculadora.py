@@ -29,20 +29,27 @@ class MiVentana(QMainWindow):
         self.division.clicked.connect(self.dividir)
         self.potencia.clicked.connect(self.potenciacion)
         self.raiz.clicked.connect(self.radicacion)
+        self.borrar_operador.clicked.connect(self.on_borrar_operador)
         
     def on_borrar(self):
-        
+        #Borrar un digito
         label_content = self.Calculo.text()
-        self.Calculo.setText(label_content[:-1])    
+        self.Calculo.setText(label_content[:-1])   
+    
+    def on_borrar_operador(self):
+        #Borrar el operador en pantalla "Calculo"
+        self.Calculo.setText("")  
             
     def sumar(self):
-  
+        
+        
         if(self.operador1 == 0):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "suma"
         
-
+           
+                
         else:       
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
