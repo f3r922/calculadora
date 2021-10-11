@@ -26,11 +26,14 @@ class MiVentana(QMainWindow):
         self.suma.clicked.connect(self.sumar)
         self.igual.clicked.connect(self.resultado)
         self.borrar.clicked.connect(self.on_borrar)
+        self.borrartodo.clicked.connect(self.borrar_operador)
         self.division.clicked.connect(self.dividir)
         self.potencia.clicked.connect(self.potenciacion)
         self.raiz.clicked.connect(self.radicacion)
         self.borrar_operador.clicked.connect(self.on_borrar_operador)
         
+        
+    #borra un numero
     def on_borrar(self):
         #Borrar un digito
         label_content = self.Calculo.text()
@@ -40,6 +43,8 @@ class MiVentana(QMainWindow):
         #Borrar el operador en pantalla "Calculo"
         self.Calculo.setText("")  
             
+    #suma
+    
     def sumar(self):
         
         
@@ -55,6 +60,7 @@ class MiVentana(QMainWindow):
             self.Calculo.setText("")
             self.operacion = "suma"          
 
+    #division
     
     def dividir(self):
         if(self.operador1 == 0):
@@ -68,6 +74,8 @@ class MiVentana(QMainWindow):
             self.Calculo.setText("")
             self.operacion = "division"           
     
+    #potencia
+    
     def potenciacion(self):
     
         if(self.operador1 == 0):
@@ -80,7 +88,8 @@ class MiVentana(QMainWindow):
             self.operador1 = int(self.Calculo.text())
             self.Calculo.setText("")
             self.operacion = "potencia" 
-                  
+             
+    #radicacion     
     def radicacion(self):
     # Muestro directamente el resultado al presionar el boton raiz    
         if(self.operador1 == 0):
@@ -94,6 +103,8 @@ class MiVentana(QMainWindow):
             self.Calculo.setText("")
             self.Calculo.setText(str(int(math.pow(self.operador1,(1/2)))))  
             
+    #Muestra los resultados    
+        
     def resultado(self):
         #Se procede a la operación dependiendo del tipo y siempre y cuando este determinado el primer operador.
         if(self.operacion == "suma"):
