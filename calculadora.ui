@@ -6,17 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>421</width>
-    <height>276</height>
+    <width>246</width>
+    <height>296</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLabel" name="Calculo">
         <property name="font">
@@ -31,9 +38,15 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QPushButton" name="potencia">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -45,6 +58,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="raiz">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -56,6 +75,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="borrar_operador">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -67,6 +92,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="borrartodo">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -78,6 +109,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="borrar">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -93,8 +130,20 @@
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QPushButton" name="boton7">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>80</height>
+           </size>
+          </property>
           <property name="styleSheet">
-           <string notr="true">font-size: 20px
+           <string notr="true">QPushButton {
+Background-color: rgb(87,150,212);
+border:none;
+padding-top: 5px;
+color: rgb(220,220,220);
+border-radius:30px;
+}
 </string>
           </property>
           <property name="text">
@@ -104,6 +153,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton8">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>80</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -115,6 +170,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton9">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>80</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -126,6 +187,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="division">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -141,6 +208,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="QPushButton" name="boton4">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -152,6 +225,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton5">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -163,6 +242,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton6">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -174,6 +259,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="producto">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -189,6 +280,12 @@
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QPushButton" name="boton1">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -200,6 +297,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton2">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -211,6 +314,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="boton3">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -222,6 +331,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="resta">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -234,9 +349,15 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
         <item>
          <widget class="QPushButton" name="boton0">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -248,6 +369,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="punto">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -259,6 +386,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="igual">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>
@@ -270,6 +403,12 @@
         </item>
         <item>
          <widget class="QPushButton" name="suma">
+          <property name="maximumSize">
+           <size>
+            <width>40</width>
+            <height>16777215</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">font-size: 20px
 </string>

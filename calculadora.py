@@ -1,16 +1,16 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5 import uic
 import math
+import re
 
 class MiVentana(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi("calculadora.ui", self)
         #Seteamos los operadores
-        self.operador1 = 0
-        self.operador2 = 0
+
         #Seteamos el tipo de operación a realizar
-        self.operacion = ""
+
         #Listeners de Eventos de los botones de los números
         self.boton1.clicked.connect(self.click_1)
         self.boton2.clicked.connect(self.click_2)
@@ -23,127 +23,185 @@ class MiVentana(QMainWindow):
         self.boton9.clicked.connect(self.click_9)
         self.boton0.clicked.connect(self.click_0)
         #Listeners de Eventos de los botones de las operaciones
-        self.suma.clicked.connect(self.sumar)
+        self.suma.clicked.connect(self.click_mas)
         self.igual.clicked.connect(self.resultado)
         self.borrar.clicked.connect(self.on_borrar)
-        self.division.clicked.connect(self.dividir)
-        self.potencia.clicked.connect(self.potenciacion)
-        self.raiz.clicked.connect(self.radicacion)
+        self.division.clicked.connect(self.click_division)
+        self.potencia.clicked.connect(self.click_potencia)
+        self.raiz.clicked.connect(self.click_raiz)
         self.borrar_operador.clicked.connect(self.on_borrar_operador)
+        self.borrartodo.clicked.connect(self.on_borrar_todo)
         
     def on_borrar(self):
         #Borrar un digito
-        label_content = self.Calculo.text()
-        self.Calculo.setText(label_content[:-1])   
+        label_content = self.label.text()
+        self.label.setText(label_content[:-1])
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))  
     
     def on_borrar_operador(self):
         #Borrar el operador en pantalla "Calculo"
-        self.Calculo.setText("")  
-            
-    def sumar(self):
-        
-        
-        if(self.operador1 == 0):
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "suma"
-        
-           
-                
-        else:       
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "suma"          
-
+        self.label.setText("") 
     
-    def dividir(self):
-        if(self.operador1 == 0):
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "division"
-            
-
-        if(self.operador1 and self.operador2 != 0):
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "division"           
+    def on_borrar_todo(self):
+        self.label.setText("")
+        self.Calculo.setText("")
+          
     
-    def potenciacion(self):
-    
-        if(self.operador1 == 0):
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "potencia"
-        
-
-        else:       
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.operacion = "potencia" 
-                  
-    def radicacion(self):
-    # Muestro directamente el resultado al presionar el boton raiz    
-        if(self.operador1 == 0):
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.Calculo.setText(str(math.pow(self.operador1,(1/2))))
-        
-
-        else:       
-            self.operador1 = int(self.Calculo.text())
-            self.Calculo.setText("")
-            self.Calculo.setText(str(int(math.pow(self.operador1,(1/2)))))  
-            
     def resultado(self):
         #Se procede a la operación dependiendo del tipo y siempre y cuando este determinado el primer operador.
-        if(self.operacion == "suma"):
-            self.operador2 = int(self.Calculo.text())
-            self.Calculo.setText(str(self.operador1+self.operador2))
-
-        if(self.operacion == "division"):
-            self.operador2 = int(self.Calculo.text())
-            if self.operador2==0:
-                self.Calculo.setText('Math ERROR')
-            else:
-                self.Calculo.setText(str(int(self.operador1/self.operador2)))
         
-        if(self.operacion == "potencia"):
-            self.operador2 = int(self.Calculo.text())
-            self.Calculo.setText(str(int(math.pow(self.operador1,self.operador2))))
+        try:
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.label.setText(self.label.text() + "=" )
+            self.Calculo.setText(str(self.result))
+        except ZeroDivisionError:
+            self.Calculo.setText('No se puede dividir entre cero')
 
 
+    
             
     #Eventos de asignación de valores al label
     def click_1(self):
-        self.Calculo.setText(self.Calculo.text() + "1")
+        
+        self.label.setText(self.label.text() + "1" )
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+           
+    def click_2(self):
+        
+        self.label.setText(self.label.text() + "2")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
 
-    def click_2(self): 
-        self.Calculo.setText(self.Calculo.text() + "2")
     
-    def click_3(self): 
-        self.Calculo.setText(self.Calculo.text() + "3")
-    
-    def click_4(self): 
-        self.Calculo.setText(self.Calculo.text() + "4")
-    
-    def click_5(self): 
-        self.Calculo.setText(self.Calculo.text() + "5")
-    
-    def click_6(self): 
-        self.Calculo.setText(self.Calculo.text() + "6")
-    
-    def click_7(self): 
-        self.Calculo.setText(self.Calculo.text() + "7")
-    
-    def click_8(self): 
-        self.Calculo.setText(self.Calculo.text() + "8")
-    
-    def click_9(self): 
-        self.Calculo.setText(self.Calculo.text() + "9")
-    
-    def click_0(self): 
-        self.Calculo.setText(self.Calculo.text() + "0")
+    def click_3(self):
+        
+        self.label.setText(self.label.text() + "3")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
 
+    
+    def click_4(self):
+        
+        self.label.setText(self.label.text() + "4")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+    
+    def click_5(self):
+       
+        self.label.setText(self.label.text() + "5")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+        
+    def click_6(self):
+        
+        self.label.setText(self.label.text() + "6")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+ 
+    
+    def click_7(self):
+        
+        self.label.setText(self.label.text() + "7")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+
+    
+    def click_8(self):
+        
+        self.label.setText(self.label.text() + "8")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+
+    
+    def click_9(self):
+        
+        self.label.setText(self.label.text() + "9")
+        #if len(self.Calculo.text()) >= 1:
+        self.operation = self.label.text() 
+        self.result = eval (self.operation)
+        self.Calculo.setText(str(self.result))
+
+    
+    def click_0(self):
+        
+        self.label.setText(self.label.text() + "0")
+        
+        #if len(self.Calculo.text()) >= 1:
+        try:    
+            self.operation = self.label.text()
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
+        except ZeroDivisionError:
+            self.Calculo.setText('No se puede dividir entre cero')
+
+    
+    def click_mas(self):
+        if (("=")) in self.label.text():
+            self.label.setText(self.Calculo.text()+"+")
+        elif "+" in self.label.text():
+            self.operation = self.label.text()
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
+            self.label.setText(self.label.text() + "+")
+        elif "" in self.Calculo.text():
+            self.label.setText(self.Calculo.text() + "+")
+        else:
+            self.label.setText(self.label.text() + "+")
+            self.Calculo.setText('')
+
+    def click_division(self):
+        if ("=") in self.label.text():
+            self.label.setText(self.Calculo.text()+"/")
+        else:
+            try:    
+                self.operation = self.label.text()
+                self.result = eval (self.operation)
+                self.Calculo.setText(str(self.result))
+                self.label.setText(self.label.text() + "/")
+            except ZeroDivisionError:
+                self.Calculo.setText('No se puede dividir entre cero')
+
+        
+    def click_raiz(self):
+        if self.Calculo.text() == "":
+            self.result = int(self.label.text())**(1/2)
+            self.label.setText("√" + "(" +self.label.text()+")")
+            self.Calculo.setText(str(self.result))
+        else:
+            self.result = float(self.Calculo.text())**(1/2)
+            self.label.setText("√" + "(" +self.Calculo.text()+")")
+            self.Calculo.setText(str(self.result))
+    
+    def click_potencia(self):
+        if self.Calculo.text() == "":
+            self.label.setText(self.label.text() + "**")
+        else:
+            self.label.setText(self.Calculo.text() + "**")
+        
+
+   
+
+            
 app = QApplication([])
 win = MiVentana()
 win.show()
