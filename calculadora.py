@@ -32,6 +32,8 @@ class MiVentana(QMainWindow):
         self.borrar_operador.clicked.connect(self.on_borrar_operador)
         self.borrartodo.clicked.connect(self.on_borrar_todo)
         
+        
+    #borra un numero
     def on_borrar(self):
         #Borrar un digito
         label_content = self.label.text()
