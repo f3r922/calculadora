@@ -32,7 +32,7 @@ class MiVentana(QMainWindow):
         self.borrar_operador.clicked.connect(self.on_borrar_operador)
         self.borrartodo.clicked.connect(self.on_borrar_todo)
         self.punto.clicked.connect(self.click_punto)
-        
+        self.Calculo.setText("0")
         
     #borra un numero
     def on_borrar(self):
@@ -72,84 +72,136 @@ class MiVentana(QMainWindow):
             
     #asignamos a cada tecla la operacion, mientras presionamos el numero se muestra en label y automaticamente me realiza la operacion
     def click_1(self):
-        
-        self.label.setText(self.label.text() + "1" )
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "1")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))
+        else:   
+            self.label.setText(self.label.text() + "1" )
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
            
     def click_2(self):
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "2")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))
         
-        self.label.setText(self.label.text() + "2") 
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        else:
+            self.label.setText(self.label.text() + "2") 
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
 
     
     def click_3(self):
-        
-        self.label.setText(self.label.text() + "3")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "3")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))
+        else:
+            self.label.setText(self.label.text() + "3")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
 
     
     def click_4(self):
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "4")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "4")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
         
-        self.label.setText(self.label.text() + "4")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
-    
     def click_5(self):
-       
-        self.label.setText(self.label.text() + "5")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "5")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "5")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
         
     def click_6(self):
-        
-        self.label.setText(self.label.text() + "6")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "6")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "6")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
  
     
     def click_7(self):
-        
-        self.label.setText(self.label.text() + "7")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "7")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "7")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
 
     
     def click_8(self):
         
-        self.label.setText(self.label.text() + "8")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "8")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "8")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
 
     
     def click_9(self):
-        
-        self.label.setText(self.label.text() + "9")
-        self.operation = self.label.text() 
-        self.result = eval (self.operation)
-        self.Calculo.setText(str(self.result))
+        if "^"  in self.label.text():
+            self.label.setText(self.label.text() + "9")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result))    
+        else:    
+            self.label.setText(self.label.text() + "9")
+            self.operation = self.label.text() 
+            self.result = eval (self.operation)
+            self.Calculo.setText(str(self.result))
 
     
     def click_0(self):
-        
-        self.label.setText(self.label.text() + "0")
-        #se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
-        try:    
-            self.operation = self.label.text()
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
-        except ZeroDivisionError:
-            self.Calculo.setText('No se puede dividir entre cero')
+        if "^" in self.label.text():
+            self.label.setText(self.label.text() + "0")
+            self.new_operador = self.label.text().replace('^','**')
+            self.result = eval (self.new_operador)
+            self.Calculo.setText(str(self.result)) 
+        else:
+            self.label.setText(self.label.text() + "0")
+            #se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
+            try:    
+                self.operation = self.label.text()
+                self.result = eval (self.operation)
+                self.Calculo.setText(str(self.result))
+            except ZeroDivisionError:
+                self.Calculo.setText('No se puede dividir entre cero')
 
     
     def click_mas(self):
@@ -176,20 +228,14 @@ class MiVentana(QMainWindow):
 
         
     def click_raiz(self):
-        #if self.Calculo.text() == "":
-            #self.result = int(self.label.text())**(1/2)
-            #self.label.setText("√" + "(" +self.label.text()+")")
-            #self.Calculo.setText(str(self.result))
-        #else:
+        #Obtengo la raiz del numero que se encuentra en la pantalla Calculo
             self.result = float(self.Calculo.text())**(1/2)
             self.label.setText("√" + "(" +self.Calculo.text()+")")
             self.Calculo.setText(str(self.result))
     
     def click_potencia(self):
-        #if self.Calculo.text() == "":
-            #self.label.setText(self.label.text() + "**")
-        #else:
-            self.label.setText(self.label.text() + "**")
+
+        self.label.setText(self.label.text() + "^")
         
     def click_punto(self):
         self.label.setText(self.label.text() + ".")
