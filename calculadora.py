@@ -68,9 +68,10 @@ class MiVentana(QMainWindow):
             self.Calculo.setText('No se puede dividir entre cero')
 
 
-    
+    #cambia el las etiquitas y actaliza el contenido
     
     def hacer_operacion(self,num):
+        #verifica el simbolo de potencia y lo cambia por el operador
         if "^" in self.label.text():
             self.label.setText(self.label.text() + num)
             self.new_operador = self.label.text().replace('^','**')
@@ -81,47 +82,28 @@ class MiVentana(QMainWindow):
             self.operation = self.label.text() 
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
+            
     
             
     #asignamos a cada tecla la operacion, mientras presionamos el numero se muestra en label y automaticamente me realiza la operacion
     def click_1(self):
         self.hacer_operacion("1")
-        
-        
-           
     def click_2(self):
         self.hacer_operacion("2")
-
-    
     def click_3(self):
         self.hacer_operacion("3")
-
-
-    
     def click_4(self):
         self.hacer_operacion("4")
-
-        
     def click_5(self):
         self.hacer_operacion("5")
-        
     def click_6(self):
         self.hacer_operacion("6")
- 
-    
     def click_7(self):
         self.hacer_operacion("7")
-
-    
     def click_8(self):
-        
         self.hacer_operacion("8")
-
-    
     def click_9(self):
         self.hacer_operacion("9")
-
-    
     def click_0(self):
         if "^" in self.label.text():
             self.label.setText(self.label.text() + "0")
