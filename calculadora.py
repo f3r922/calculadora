@@ -44,7 +44,7 @@ class MiVentana(QMainWindow):
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
         except SyntaxError: 
-            pass 
+            pass
             
     def on_borrar_operador(self):
         #Borrar las operaciones en la  pantalla "label"
@@ -53,7 +53,7 @@ class MiVentana(QMainWindow):
     def on_borrar_todo(self):
         #Borramos todo en pantalla label como Calculo
         self.label.setText("")
-        self.Calculo.setText("")
+        self.Calculo.setText("0")
           
     
     def resultado(self):
