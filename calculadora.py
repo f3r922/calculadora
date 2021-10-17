@@ -77,7 +77,22 @@ class MiVentana(QMainWindow):
             self.new_operador = self.label.text().replace('^','**')
             self.result = eval (self.new_operador)
             self.Calculo.setText(str(self.result))
-        else:   
+        
+        #si num es igual a 0 nos pone la label error y pasa
+        
+        elif num == "0":
+                self.label.setText(self.label.text() + "0")
+            #se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
+                try:    
+                    self.operation = self.label.text()
+                    self.result = eval (self.operation)
+                    self.Calculo.setText(str(self.result))
+                except ZeroDivisionError:
+                    self.Calculo.setText('No se puede dividir entre cero')
+                    pass
+            
+            
+        else:    
             self.label.setText(self.label.text() + num )
             self.operation = self.label.text() 
             self.result = eval (self.operation)
@@ -105,20 +120,7 @@ class MiVentana(QMainWindow):
     def click_9(self):
         self.hacer_operacion("9")
     def click_0(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "0")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result)) 
-        else:
-            self.label.setText(self.label.text() + "0")
-            #se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
-            try:    
-                self.operation = self.label.text()
-                self.result = eval (self.operation)
-                self.Calculo.setText(str(self.result))
-            except ZeroDivisionError:
-                self.Calculo.setText('No se puede dividir entre cero')
+        self.hacer_operacion("0")
 
     
     def click_mas(self):
