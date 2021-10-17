@@ -40,9 +40,9 @@ class MiVentana(QMainWindow):
         try:
             label_content = self.label.text()
             self.label.setText(label_content[:-1])
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+            label_minus = self.label.text() 
+            result = eval (label_minus)
+            self.Calculo.setText(str(result))
         except SyntaxError: 
             pass 
             
@@ -78,11 +78,10 @@ class MiVentana(QMainWindow):
             self.result = eval (self.new_operador)
             self.Calculo.setText(str(self.result))
         
-        #si num es igual a 0 nos pone la label error y pasa
+        #si num es igual a 0 ,se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
         
         elif num == "0":
                 self.label.setText(self.label.text() + "0")
-            #se utiliza try por que podemos clickear el 0 en una division y como denominador no es posible
                 try:    
                     self.operation = self.label.text()
                     self.result = eval (self.operation)
@@ -124,14 +123,14 @@ class MiVentana(QMainWindow):
 
     
     def click_mas(self):
-        if (("=")) in self.label.text():
+        if "=" in self.label.text():
             self.label.setText(self.Calculo.text()+"+")
         #Para seguir mostrando la operacion de sumandos 
         elif "+" in self.label.text():
             self.label.setText(self.label.text() + "+")
         #Si borro la operacion q esta en label al presionar "+" lo que esta en Calculo pasa a label mas el signo (+)
-        elif "" in self.label.text():
-            self.label.setText(self.Calculo.text() + "+")
+        # elif "" in self.label.text():
+        #     self.label.setText(self.Calculo.text() + "+")
         else:
             self.label.setText(self.label.text() + "+")
             
