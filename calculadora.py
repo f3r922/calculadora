@@ -69,122 +69,57 @@ class MiVentana(QMainWindow):
 
 
     
-            
-    #asignamos a cada tecla la operacion, mientras presionamos el numero se muestra en label y automaticamente me realiza la operacion
-    def click_1(self):
+    
+    def hacer_operacion(self,num):
         if "^" in self.label.text():
-            self.label.setText(self.label.text() + "1")
+            self.label.setText(self.label.text() + num)
             self.new_operador = self.label.text().replace('^','**')
             self.result = eval (self.new_operador)
             self.Calculo.setText(str(self.result))
         else:   
-            self.label.setText(self.label.text() + "1" )
+            self.label.setText(self.label.text() + num )
             self.operation = self.label.text() 
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
+    
+            
+    #asignamos a cada tecla la operacion, mientras presionamos el numero se muestra en label y automaticamente me realiza la operacion
+    def click_1(self):
+        self.hacer_operacion("1")
+        
+        
            
     def click_2(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "2")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))
-        
-        else:
-            self.label.setText(self.label.text() + "2") 
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("2")
 
     
     def click_3(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "3")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))
-        else:
-            self.label.setText(self.label.text() + "3")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("3")
+
 
     
     def click_4(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "4")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "4")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("4")
+
         
     def click_5(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "5")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "5")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("5")
         
     def click_6(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "6")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "6")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("6")
  
     
     def click_7(self):
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "7")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "7")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("7")
 
     
     def click_8(self):
         
-        if "^" in self.label.text():
-            self.label.setText(self.label.text() + "8")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "8")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("8")
 
     
     def click_9(self):
-        if "^"  in self.label.text():
-            self.label.setText(self.label.text() + "9")
-            self.new_operador = self.label.text().replace('^','**')
-            self.result = eval (self.new_operador)
-            self.Calculo.setText(str(self.result))    
-        else:    
-            self.label.setText(self.label.text() + "9")
-            self.operation = self.label.text() 
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+        self.hacer_operacion("9")
 
     
     def click_0(self):
