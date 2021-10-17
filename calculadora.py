@@ -64,13 +64,24 @@ class MiVentana(QMainWindow):
             self.result = eval (self.operation)
             self.label.setText(self.label.text() + "=" )
             self.Calculo.setText(str(self.result))
-        except ZeroDivisionError:
-            self.Calculo.setText('No se puede dividir entre cero')
+        except (ZeroDivisionError,SyntaxError) as err:
+            if err.__class__.__name__ == "ZeroDivisionError":
+                self.Calculo.setText('No se puede dividir entre cero')
+                self.label.setText("")
+                pass
+            if err.__class__.__name__ == "SyntaxError":
+                pass
 
 
     #cambia el las etiquitas y actaliza el contenido
     
     def hacer_operacion(self,num):
+        
+        #saca el = del eval para evitar el error
+        if "=" in self.label.text():
+            self.label.setText(self.label.text()[:-1])
+        
+        
         #verifica el simbolo de potencia y lo cambia por el operador
         if "^" in self.label.text():
             self.label.setText(self.label.text() + num)
@@ -125,12 +136,12 @@ class MiVentana(QMainWindow):
     def click_mas(self):
         if "=" in self.label.text():
             self.label.setText(self.Calculo.text()+"+")
-        #Para seguir mostrando la operacion de sumandos 
-        elif "+" in self.label.text():
-            self.label.setText(self.label.text() + "+")
+        #Para seguir mostrando la operacion de sumandos poder seguir
+        # elif "+" in self.label.text():
+        #     self.label.setText(self.label.text() + "+")
         #Si borro la operacion q esta en label al presionar "+" lo que esta en Calculo pasa a label mas el signo (+)
-        # elif "" in self.label.text():
-        #     self.label.setText(self.Calculo.text() + "+")
+        elif "" in self.label.text():
+            self.label.setText(self.Calculo.text() + "+")
         else:
             self.label.setText(self.label.text() + "+")
             
