@@ -157,7 +157,8 @@ class MiVentana(QMainWindow):
             except ZeroDivisionError:
                 self.Calculo.setText('No se puede dividir entre cero')
                 self.label.setText("")
-
+            except SyntaxError:
+                pass
     
     def click_mas(self):
         
