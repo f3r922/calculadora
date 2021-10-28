@@ -39,12 +39,46 @@ class MiVentana(QMainWindow):
         self.paren2.clicked.connect(self.click_parentesis_cierro)
         self.Calculo.setText("0")
         
-    #borra un numero
-    def keyPressEvent(self, event):
-        key = event.key()
-        if key == Qt.key:
-            self.boton1.clicked.connect(self.click_1)
+    #agrega por teclado    
+    def keyPressEvent(self,event):
+        
+        
+        if event.text() == "1":
+            self.hacer_operacion("1")
+        if event.text() == "2":
+            self.hacer_operacion("2")
+        if event.text() == "3":
+            self.hacer_operacion("3")
+        if event.text() == "4":
+            self.hacer_operacion("4")
+        if event.text() == "5":
+            self.hacer_operacion("5")
+        if event.text() == "6":
+            self.hacer_operacion("6")
+        if event.text() == "7":
+            self.hacer_operacion("7")
+        if event.text() == "8":
+            self.hacer_operacion("8")
+        if event.text() == "9":
+            self.hacer_operacion("9")
+        if event.text() == "0":
+            self.click_0()
+        if event.text() == ".":
+            self.click_punto()
+        #operaciones
+        if event.text() == "+":
+            self.click_mas()
+        if event.text() == "-":
+            self.click_menos()
+        if event.text() == "*":
+            self.click_por()
+        if event.text() == "/":
+            self.click_division()
+        if event.key() == 16777220:
+            self.resultado()
+        
             
+    #borra un numero
     def on_borrar(self):
         #Borrar un digito, se utiliza try y except para que no me saque por error de sintaxis
         try:
