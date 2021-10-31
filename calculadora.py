@@ -42,7 +42,7 @@ class MiVentana(QMainWindow):
     #agrega por teclado    
     def keyPressEvent(self,event):
         
-        
+        #print(event.key())
         if event.text() == "1":
             self.hacer_operacion("1")
         if event.text() == "2":
@@ -76,8 +76,10 @@ class MiVentana(QMainWindow):
             self.click_division()
         if event.key() == 16777220:
             self.resultado()
-        
-            
+        if event.key() == 16777219:
+            self.on_borrar()
+        if event.key() == 16777223:
+            self.on_borrar_todo()            
     #borra un numero
     def on_borrar(self):
         #Borrar un digito, se utiliza try y except para que no me saque por error de sintaxis
@@ -87,9 +89,13 @@ class MiVentana(QMainWindow):
             self.operation = self.label.text() 
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
-        
+           
         except SyntaxError: 
-            self.Calculo.setText("0")
+            if self.label.text()=="":
+                self.Calculo.setText("0")
+            else:
+                pass
+            #self.Calculo.setText("0")
             
     def on_borrar_operador(self):
         #Borrar las operaciones en la  pantalla "label"
@@ -136,10 +142,11 @@ class MiVentana(QMainWindow):
         #verifica el simbolo de potencia y lo cambia por el operador
             if "^" in self.label.text():
                 self.label.setText(self.label.text() + num)
-                self.new_operador = self.label.text().replace('^','**')
+                self.new_operador = self.label.text().replace('^','**') 
                 self.result = eval (self.new_operador)
                 numero_coma = "{:,}".format(self.result)
                 self.Calculo.setText(str(numero_coma))
+                
 
             else:   
                 self.label.setText(self.label.text() + num )
@@ -191,8 +198,7 @@ class MiVentana(QMainWindow):
             except ZeroDivisionError:
                 self.Calculo.setText('No se puede dividir entre cero')
                 self.label.setText("")
-            except SyntaxError:
-                pass
+
     
     def click_mas(self):
         
@@ -202,9 +208,9 @@ class MiVentana(QMainWindow):
                 self.label.setText( a + "+")
                 
             ##Para seguir mostrando la operacion de sumandos 
-            #elif "+" in self.label.text():
+            elif "√" in self.label.text():
             
-                #self.label.setText(self.label.text() + "+")
+                self.label.setText(self.Calculo.text() + "+")
             #Si borro la operacion q esta en label al presionar "+" lo que esta en Calculo pasa a label mas el signo (+)
             #elif "" in self.label.text():
                 #a = self.Calculo.text().replace(',','')
@@ -222,6 +228,9 @@ class MiVentana(QMainWindow):
             
             a = self.Calculo.text().replace(',','')
             self.label.setText( a + "-")
+        elif "√" in self.label.text():
+                
+                self.label.setText(self.Calculo.text() + "-")
         #Para seguir mostrando la operacion de sumandos 
         
         #elif "-" in self.label.text():
@@ -240,7 +249,10 @@ class MiVentana(QMainWindow):
             a = self.Calculo.text().replace(',','')
             
             self.label.setText( a + "/")
-                
+            
+        elif "√" in self.label.text():
+                    
+            self.label.setText(self.Calculo.text() + "/")        
         else:
             try:    
                 self.label.setText(self.label.text() + "/")
@@ -265,18 +277,29 @@ class MiVentana(QMainWindow):
                 
             a = self.Calculo.text().replace(',','')
             self.label.setText( a + "^")
+        elif "√" in self.label.text():
+                    
+            self.label.setText(self.Calculo.text() + "^")
         else:
             self.label.setText(self.label.text() + "^")
         
     def click_punto(self):
-            
-        self.label.setText(self.label.text() + ".")
+        if self.label.text() == (""):
+                    
+            a = self.Calculo.text().replace(',','')
+            self.label.setText( a + ".")
+        else:    
+            self.label.setText(self.label.text() + ".")
     
     def  click_por(self): 
         if self.label.text() == (""):
                 
             a = self.Calculo.text().replace(',','')
             self.label.setText( a + "*")
+            
+        elif "√" in self.label.text():
+                    
+            self.label.setText(self.Calculo.text() + "*")
         else:
             self.label.setText(self.label.text() + "*")
     
@@ -292,6 +315,7 @@ class MiVentana(QMainWindow):
             self.Calculo.setText(str(self.result))
         except SyntaxError:
             pass
+        
             
 app = QApplication([])
 win = MiVentana()
