@@ -80,13 +80,14 @@ class MiVentana(QMainWindow):
             self.on_borrar()
         if event.key() == 16777223:
             self.on_borrar_todo()            
+   
     #borra un numero
     def on_borrar(self):
         #Borrar un digito, se utiliza try y except para que no me saque por error de sintaxis
         try:
             label_content = self.label.text()
             self.label.setText(label_content[:-1])
-            self.operation = self.label.text() 
+            self.operation = self.label.text().replace('^','**') 
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
            
@@ -111,13 +112,12 @@ class MiVentana(QMainWindow):
         #al presional el boton igual.
         
         try:
-            self.operation = self.label.text() 
+            self.operation = self.label.text().replace('^','**') 
             self.result = eval (self.operation)
             self.label.setText("")
             numero_coma = "{:,}".format(self.result)
             self.Calculo.setText(str(numero_coma))
             
-    
             
         except ZeroDivisionError:
             self.Calculo.setText('No se puede dividir entre cero')
@@ -198,7 +198,8 @@ class MiVentana(QMainWindow):
             except ZeroDivisionError:
                 self.Calculo.setText('No se puede dividir entre cero')
                 self.label.setText("")
-
+            except SyntaxError:
+                pass
     
     def click_mas(self):
         
@@ -211,17 +212,10 @@ class MiVentana(QMainWindow):
             elif "√" in self.label.text():
             
                 self.label.setText(self.Calculo.text() + "+")
-            #Si borro la operacion q esta en label al presionar "+" lo que esta en Calculo pasa a label mas el signo (+)
-            #elif "" in self.label.text():
-                #a = self.Calculo.text().replace(',','')
-                #self.label.setText( a + "+")
                 
-             
             else:
                 self.label.setText(self.label.text() + "+")
-
-    
-            
+  
     def click_menos(self):
         
         if self.label.text() == (""):
@@ -231,15 +225,7 @@ class MiVentana(QMainWindow):
         elif "√" in self.label.text():
                 
                 self.label.setText(self.Calculo.text() + "-")
-        #Para seguir mostrando la operacion de sumandos 
-        
-        #elif "-" in self.label.text():
-            #self.label.setText(self.label.text() + "-")
-        #Si borro la operacion q esta en label al presionar "+" lo que esta en Calculo pasa a label mas el signo (+)
-        
-        #elif "" in self.label.text():
-            #a = self.Calculo.text().replace(',','')
-            #self.label.setText( a + "-")
+                
         else:
             self.label.setText(self.label.text() + "-")        
 
@@ -310,7 +296,7 @@ class MiVentana(QMainWindow):
     def click_parentesis_cierro(self):
         try:
             self.label.setText(self.label.text() + ")")
-            self.operation = self.label.text() 
+            self.operation = self.label.text().replace('^','**')
             self.result = eval (self.operation)
             self.Calculo.setText(str(self.result))
         except SyntaxError:
