@@ -96,7 +96,7 @@ class MiVentana(QMainWindow):
                 self.Calculo.setText("0")
             else:
                 pass
-            #self.Calculo.setText("0")
+           
             
     def on_borrar_operador(self):
         #Borrar las operaciones en la  pantalla "label"
@@ -253,7 +253,9 @@ class MiVentana(QMainWindow):
             self.operador = eval (self.Calculo.text().replace(',',''))
             self.result = float(math.sqrt(self.operador))
             self.label.setText("√" + "(" + str(self.operador) +")")
-            self.Calculo.setText(str(self.result))   
+            numero_coma = "{:,}".format(self.result)
+            self.Calculo.setText(str(numero_coma))
+    
         except ValueError:
             self.Calculo.setText('Math ERROR')
             self.label.setText("")   
@@ -295,10 +297,12 @@ class MiVentana(QMainWindow):
 
     def click_parentesis_cierro(self):
         try:
-            self.label.setText(self.label.text() + ")")
-            self.operation = self.label.text().replace('^','**')
-            self.result = eval (self.operation)
-            self.Calculo.setText(str(self.result))
+                self.label.setText(self.label.text() + ")")
+                self.operation = self.label.text().replace("^","**")
+                self.result = eval (self.operation)
+                numero_coma = "{:,}".format(self.result)
+                self.Calculo.setText(str(numero_coma))
+                
         except SyntaxError:
             pass
         
