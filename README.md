@@ -5,7 +5,6 @@ Integrantes:
 - Carrizo Escudero Carlos Ezequiel
 
 Realizados metodos:
--Borrar digito.
--Potencia/raiz.
--Division.
--Borrar operador
+Agregar valores y operaciones por teclado.
+Múltiples operaciones.
+se utilizan las comas para miles, millones, etc;
